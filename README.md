@@ -1,15 +1,15 @@
 # EXP1-Image-Handling-and-Pixel-Transformations-Using-OpenCV
 AIM:
+
 Write a Python program using OpenCV that performs the following tasks:
 
-1.Read and Display an Image.
-2.Adjust the brightness of an image.
-3.Modify the image contrast.
-4.Generate a third image using bitwise operations.
 Software Required:
+
 .Anaconda - Python 3.7
 .Jupyter Notebook (for interactive development and execution)
+
 Algorithm:
+
 Step 1:
 Load an image from your local directory and display it.
 
@@ -25,15 +25,17 @@ Modify the image contrast by creating two higher contrast images using scaling f
 Display the original, lower contrast, and higher contrast images.
 
 Step 5:
-Split the image (boy.jpg) into B, G, R components and display the channels
+Split the image (Dolphin.jpg) into B, G, R components and display the channels
 
 Program Developed By:
 Name: Litya M
 
 Register Number: 212225230152
 
+program:
+
 Ex. No. 01
-1. Read the image ('Eagle_in_Flight.jpg') using OpenCV imread() as a grayscale image.
+1. Read the image ('Dolphin.jpg') using OpenCV imread() as a grayscale image.
 ```
 import cv2
 import matplotlib.pyplot as plt
@@ -71,7 +73,7 @@ plt.title("Color Image")
 plt.axis('off')
 plt.show()
 ```
-11. Crop the image to extract any specific (Eagle alone) object from the image.
+11. Crop the image to extract any specific (Dolphin alone) object from the image.
 ```
 image = cv2.imread('dolphin image 1.jpg')
 image.shape
@@ -82,7 +84,7 @@ plt.title("Cropped Region of Interest (ROI)")
 plt.axis("off")
 plt.show()
 ```
-13. Resize the image up by a factor of 2x.
+12. Resize the image up by a factor of 2x.
 ```
 image = cv2.imread('dolphin image 1.jpg')
 image.shape
@@ -94,13 +96,13 @@ plt.title("Resized Image (Half Size)")
 plt.axis("off")
 plt.show()
 ```
-15. Flip the cropped/resized image horizontally.
+13. Flip the cropped/resized image horizontally.
 ```
 image = cv2.imread('dolphin image 1.jpg')
 flipped_horizontally = cv2.flip(image, 1)
 flipped_horizontally_rgb = cv2.cvtColor(flipped_horizontally, cv2.COLOR_BGR2RGB)
 ```
-# Horizontal flip
+14. Horizontal flip
 ```
 plt.imshow(flipped_horizontally_rgb)
 plt.title("Flipped Horizontally")
@@ -111,12 +113,12 @@ plt.imshow(flipped_vertically_rgb)
 plt.title("Flipped Vertically")
 plt.axis("off")
 ```
-10. Read in the image ('Apollo-11-launch.jpg').
+15. Read in the image ('Dolphin.jpg').
 ```
 img = cv2.imread('dolphin image 1.jpg', cv2.IMREAD_COLOR)
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 ```
-12. Add the following text to the dark area at the bottom of the image (centered on the image):
+16. Add the following text to the dark area at the bottom of the image (centered on the image):
 ```
 image = cv2.imread('dolphin image 1.jpg')
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -126,7 +128,7 @@ _ = cv2.putText(img_rgb, "SAADHANA", (10,30),
                 (255,255,255),  
                 2)
 ```
-14. Draw a magenta rectangle that encompasses the launch tower and the rocket.
+17. Draw a magenta rectangle that encompasses the Dolphin.
 ```
 rect_color = magenta
 image = cv2.imread('dolphin image 1.jpg')
@@ -137,7 +139,7 @@ plt.title("Rectangle")
 plt.axis('off')
 plt.show()
 ```
-13. Display the final annotated image.
+18. Display the final annotated image.
 ```
 img = cv2.imread('dolphin image 1.jpg', cv2.IMREAD_COLOR)
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -148,22 +150,22 @@ plt.title("Annotated Image")
 plt.axis('off')
 plt.show()
 ```
-15. Read the image ('Boy.jpg').
+19. Read the image ('Dolphin.jpg').
 ```
 img = cv2.imread('dolphin image 1.jpg', cv2.IMREAD_COLOR)
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 ```
-17. Adjust the brightness of the image.
+20. Adjust the brightness of the image.
 ```
 m = np.ones(img_rgb.shape, dtype="uint8") * 50
 ```
-19. Create brighter and darker images.
+21. Create brighter and darker images.
 ```
 img_brighter = cv2.add(img, matrix) img_darker = cv2.subtract(img, matrix)
 img_brighter = cv2.add(img_rgb, m)  
 img_darker = cv2.subtract(img_rgb, m)
 ```
-17. Display the images (Original Image, Darker Image, Brighter Image).
+22. Display the images (Original Image, Darker Image, Brighter Image).
 ```
 plt.figure(figsize=(10,5))
 plt.subplot(1,3,1), plt.imshow(img_rgb), plt.title("Original Image"), plt.axis("off")
@@ -171,14 +173,16 @@ plt.subplot(1,3,2), plt.imshow(img_brighter), plt.title("Brighter Image"), plt.a
 plt.subplot(1,3,3), plt.imshow(img_darker), plt.title("Darker Image"), plt.axis("off")
 plt.show()
 ```
-19. Modify the image contrast.
+23. Modify the image contrast.
+    
 ```
 matrix1 = np.ones(img_rgb.shape, dtype="float32") * 1.1
 matrix2 = np.ones(img_rgb.shape, dtype="float32") * 1.2
 img_higher1 = cv2.multiply(img.astype("float32"), matrix1).clip(0,255).astype("uint8")
 img_higher2 = cv2.multiply(img.astype("float32"), matrix2).clip(0,255).astype("uint8")
 ```
-21. Display the images (Original, Lower Contrast, Higher Contrast).
+24. Display the images (Original, Lower Contrast, Higher Contrast).
+    
  ```
 plt.figure(figsize=(10,5))
 plt.subplot(1,3,1), plt.imshow(img), plt.title("Original Image"), plt.axis("off")
@@ -186,7 +190,8 @@ plt.subplot(1,3,2), plt.imshow(img_higher1), plt.title("Higher Contrast (1.1x)")
 plt.subplot(1,3,3), plt.imshow(img_higher2), plt.title("Higher Contrast (1.2x)"), plt.axis("off")
 plt.show()
 ```
-23. Split the image (boy.jpg) into the B,G,R components & Display the channels.
+25. Split the image (Dolphin.jpg) into the B,G,R components & Display the channels.
+    
 ```
 b, g, r = cv2.split(img)
 plt.figure(figsize=(10,5))
@@ -195,7 +200,8 @@ plt.subplot(1,3,2), plt.imshow(g, cmap='gray'), plt.title("Green Channel"), plt.
 plt.subplot(1,3,3), plt.imshow(r, cmap='gray'), plt.title("Red Channel"), plt.axis("off")
 plt.show()
 ```
-24. Merged the R, G, B , displays along with the original image
+26. Merged the R, G, B , displays along with the original image
+
 ```
 merged_rgb = cv2.merge([r, g, b])
 plt.figure(figsize=(5,5))
@@ -204,7 +210,8 @@ plt.title("Merged RGB Image")
 plt.axis("off")
 plt.show()
 ```
-25. Split the image into the H, S, V components & Display the channels.
+27. Split the image into the H, S, V components & Display the channels.
+    
 ```
 hsv_img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
 h, s, v = cv2.split(hsv_img)
@@ -214,7 +221,7 @@ plt.subplot(1,3,2), plt.imshow(s, cmap='gray'), plt.title("Saturation Channel"),
 plt.subplot(1,3,3), plt.imshow(v, cmap='gray'), plt.title("Value Channel"), plt.axis("off")
 plt.show()
 ```
-26. Merged the H, S, V, displays along with original image.
+28. Merged the H, S, V, displays along with original image.
 ```
 merged_hsv = cv2.cvtColor(cv2.merge([h, s, v]), cv2.COLOR_HSV2RGB)
 combined = np.concatenate((img_rgb, merged_hsv), axis=1)
@@ -266,4 +273,5 @@ iv) Generate Third Image Using Bitwise Operations.
 
 
 Result:
+
 Thus, the images were read, displayed, brightness and contrast adjustments were made, and bitwise operations were performed successfully using the Python program.
